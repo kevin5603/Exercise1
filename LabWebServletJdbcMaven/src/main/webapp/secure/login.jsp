@@ -12,7 +12,11 @@
 </head>
 <body>
 
+<<<<<<< HEAD
 <h3>Demo Login(第二次改版)</h3>
+=======
+<h3>Demo Login</h3>
+>>>>>>> branch 'master' of https://github.com/EEIT98Team02/RemoteRepository1127.git
 
 <form action="<c:url value="/secure/login.controller" />" method="get">
 <table>

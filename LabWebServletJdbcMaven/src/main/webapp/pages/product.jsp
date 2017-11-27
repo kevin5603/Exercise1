@@ -8,7 +8,9 @@
 
 <link rel="stylesheet" type="text/css" href="" />
 
-<title>Product(第3次修改)</title>
+
+<title>Product</title>
+
 <script type="text/javascript">
 function clearForm() {
 	var inputs = document.getElementsByTagName("input");

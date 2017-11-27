@@ -13,7 +13,7 @@ public class DemoInterceptor implements HandlerInterceptor {
 		System.out.println("preHandle() handler="+handler.hashCode());
 		return true;
 	}
-	@Override
+	//@Override
 	public void postHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
 		System.out.println("postHandle() modelAndView="+modelAndView);

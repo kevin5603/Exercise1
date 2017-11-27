@@ -8,7 +8,7 @@
 <title>Home</title>
 </head>
 <body>
-<h1>Demo Welcome ${user.email}</h1>
+<h1> Welcome ${user.email}</h1>
 <h2>Demo Welcome ${user.email}</h2>
 <h3>Demo Welcome ${user.email}</h3>
 <h3><a href="<c:url value="/secure/login.jsp"/>">Login</a></h3>

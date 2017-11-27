@@ -19,7 +19,7 @@
 </head>
 <body>
 <h1>pikachuuuu Welcome ${user.email}</h1>
-<h2>bbbbbbbbb Welcome ${user.email}</h2>
+<h2>pikapika Welcome ${user.email}</h2>
 <h3>kkkkk Welcome ${user.email}</h3>
 
 <h1>asdasdasdasd</h1>

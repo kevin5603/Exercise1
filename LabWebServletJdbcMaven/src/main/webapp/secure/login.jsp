@@ -30,6 +30,7 @@
 		<td>　</td>
 		<td align="right"><input type="submit" value="Login"></td>
 	</tr>
+	<br>
 </table>
 </form>
 

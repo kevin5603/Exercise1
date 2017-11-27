@@ -10,7 +10,6 @@
 
 
 <title>Product</title>
-
 <script type="text/javascript">
 function clearForm() {
 	var inputs = document.getElementsByTagName("input");

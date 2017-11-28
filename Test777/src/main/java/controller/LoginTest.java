@@ -1,10 +1,14 @@
 package controller;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.DispatcherType;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,7 +29,7 @@ public class LoginTest extends HttpServlet {
 		String account=request.getParameter("account");
 		String psd=request.getParameter("psd");
 		
-		System.out.println("帳號為:"+account+"密碼為:"+psd);
+		
 		Map<String,String> errors=new HashMap<>();
 		request.setAttribute("errors",errors);
 		
@@ -40,12 +44,39 @@ public class LoginTest extends HttpServlet {
 		//代表使用者帳密有空白
 		if(!errors.isEmpty()) {
 			request.getRequestDispatcher("/login/login.jsp").forward(request, response);
+			return;
 		}
 		
 		//進入model部分
+		String url="jdbc:sqlserver://localhost:1433;databaseName=eventloop";
+		String user="sa";
+		String password="P@ssw0rd";
 		
-		
-		
+		Map<String,String> ans=new HashMap();
+		request.setAttribute("ans", ans);
+		try {
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			
+		} catch (ClassNotFoundException e1) {
+			e1.printStackTrace();
+		}
+		try (Connection conn=DriverManager.getConnection(url, user, password);
+				Statement stmt=conn.createStatement();){
+			
+			ResultSet rs=stmt.executeQuery("select * from member");		
+			System.out.println("印出所有帳密");
+			while(rs.next()) {
+				int count=1;
+				ans.put("account",rs.getString("account") );
+				ans.put("psd",rs.getString("psd") );
+				System.out.println("讀取第"+count+"筆資料");
+				count++;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		String path=request.getContextPath();
+		response.sendRedirect(path+"/login/success.jsp");
 		
 	}
 

@@ -9,6 +9,7 @@ public class MemberBean {
 	private Integer memberid;
 	private String account;
 	private String psd;
+	private String phone;
 
 	//只能在一般java專案測試
 	public static void main(String[] args) {
@@ -51,9 +52,17 @@ public class MemberBean {
 		this.psd = psd;
 	}
 
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
 	@Override
 	public String toString() {
-		return "MemberBean [memberid=" + memberid + ", account=" + account + ", psd=" + psd + "]";
+		return "MemberBean [memberid=" + memberid + ", account=" + account + ", psd=" + psd + ", phone=" + phone + "]";
 	}
 	
 	

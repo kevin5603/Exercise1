@@ -26,6 +26,7 @@ public class MemberDAOHibernate implements MemberDAO{
 		//因為OpenSessionInViewFilter 會幫我們 啟動  送出交易  退回交易
 		MemberBean bean=null;
 		Session session=getSession();
+		//因為主key是流水號 無法用
 		Query query=session.createQuery("from model.MemberBean where account=?");
 		query.setParameter(0, account);
 		

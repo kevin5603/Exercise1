@@ -7,7 +7,7 @@ import model.dao.MemberDAOHibernate;
 public class MemberService {
 
 	private MemberDAO memberDao=new MemberDAOHibernate(HibernateUtil.getSessionFactory());
-
+	//private MemberDAO memberDao=new MemberDAOjdbc();
 	public MemberBean login(String account, String psd) {
 
 		MemberBean bean = memberDao.select(account);

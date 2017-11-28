@@ -1,11 +1,20 @@
 package model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import org.hibernate.Session;
 
 import model.HibernateUtil.HibernateUtil;
 
+@Entity
+@Table(name="MEMBER")
 public class MemberBean {
-	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer memberid;
 	private String account;
 	private String psd;

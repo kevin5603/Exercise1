@@ -1,11 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,16 +9,23 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import model.MemberBean;
+import model.MemberService;
 
 
 @WebServlet("/login/Login.do")
 public class LoginTest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+    private MemberService memberservice;
     
-    
-
-	
+ 
+	@Override
+	public void init() throws ServletException {
+		this.memberservice=new MemberService();
+	}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//取得輸入參數
 		String account=request.getParameter("account");
@@ -47,39 +49,23 @@ public class LoginTest extends HttpServlet {
 			return;
 		}
 		
-		//進入model部分
-		String url="jdbc:sqlserver://localhost:1433;databaseName=eventloop";
-		String user="sa";
-		String password="P@ssw0rd";
+		// 進入model部分
+				// 把資料輸入資料庫並回傳給bean
+				MemberBean bean = memberservice.login(account, psd);
 		
-		Map<String,String> ans=new HashMap();
-		request.setAttribute("ans", ans);
-		try {
-			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			
-		} catch (ClassNotFoundException e1) {
-			e1.printStackTrace();
-		}
-		try (Connection conn=DriverManager.getConnection(url, user, password);
-				Statement stmt=conn.createStatement();){
-			
-			ResultSet rs=stmt.executeQuery("select * from member");		
-			System.out.println("印出所有帳密");
-			while(rs.next()) {
-				int count=1;
-				ans.put("account",rs.getString("account") );
-				ans.put("psd",rs.getString("psd") );
-				System.out.println("讀取第"+count+"筆資料");
-				count++;
+				if (bean == null) {
+					errors.put("DB", "帳號密碼不正確");
+					request.getRequestDispatcher("/login/login.jsp").forward(request, response);
+				} else {
+					bean.setAccount(account);
+					// 使用Session傳送資料到新頁面
+					HttpSession session = request.getSession();
+					session.setAttribute("ans", bean);
+		
+					String path = request.getContextPath();
+					response.sendRedirect(path + "/login/success.jsp");
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		String path=request.getContextPath();
-		response.sendRedirect(path+"/login/success.jsp");
-		
 	}
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}

@@ -8,6 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
+	<h1>成功登入</h1>
+	<h2>帳號:${ans.account }</h2>
+	<h2>密碼:${ans.psd }</h2>
 </body>
 </html>

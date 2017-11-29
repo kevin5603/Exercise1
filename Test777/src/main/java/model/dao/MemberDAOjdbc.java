@@ -12,7 +12,7 @@ import javax.sql.DataSource;
 
 import model.MemberBean;
 import model.MemberDAO;
-
+//使用JDBC技術
 //DAO負責處理資料庫有關的部分 讓Service更靈活 若要更換資料庫只需更改DAO程式碼 Service不須改動
 public class MemberDAOjdbc implements MemberDAO {
 

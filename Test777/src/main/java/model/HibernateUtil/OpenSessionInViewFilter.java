@@ -29,15 +29,16 @@ public class OpenSessionInViewFilter implements Filter {
 
 		try {
 			HibernateUtil.getSessionFactory().getCurrentSession().beginTransaction();
-			System.out.println("濾波器攔截成功 開啟交易");
+			System.out.println("!!!濾波器攔截成功 開啟交易");
 			// 代表濾波器第一階段完成 換原本的程式執行它所要做的事情
 			chain.doFilter(req, res);
 			// 到此行代表原程式已執行完畢再換到濾波器做收尾動作
 			HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().commit();
-			System.out.println("濾波器收尾動作 確認交易");
+			System.out.println("濾波器收尾動作 ˇˇˇ 確認交易");
 		} catch (Exception e) {
 			e.printStackTrace();
 			HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().rollback();
+			System.out.println("X處理失敗 退回交易x");
 			chain.doFilter(req, res);
 		}
 

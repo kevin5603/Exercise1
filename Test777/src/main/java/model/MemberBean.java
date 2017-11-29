@@ -6,10 +6,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.Session;
+
+import model.HibernateUtil.HibernateUtil;
+
 @Entity
 @Table(name="MEMBER")
 public class MemberBean {
-	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer memberid;
@@ -18,21 +21,21 @@ public class MemberBean {
 	private String phone;
 
 	//只能在一般java專案測試
-//	public static void main(String[] args) {
-//		try {
-//		HibernateUtil.getSessionFactory().getCurrentSession().beginTransaction();
-//		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
-//
-//		//insert
-//		MemberBean insert=new MemberBean();
-//		
-//		
-//		HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().commit();
-//		}finally {
-//			HibernateUtil.closeSessionFactory();
-//		}
-//
-//	}
+	public static void main(String[] args) {
+		try {
+		HibernateUtil.getSessionFactory().getCurrentSession().beginTransaction();
+		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+
+		//insert
+		MemberBean insert=new MemberBean();
+		
+		
+		HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().commit();
+		}finally {
+			HibernateUtil.closeSessionFactory();
+		}
+
+	}
 
 	public Integer getMemberid() {
 		return memberid;
@@ -57,6 +60,7 @@ public class MemberBean {
 	public void setPsd(String psd) {
 		this.psd = psd;
 	}
+	
 
 	public String getPhone() {
 		return phone;

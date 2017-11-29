@@ -12,7 +12,7 @@
 	<form action="Login.do" >
 	帳號:<input type="text" name="account" value="${param.account}">${errors.account} <br>
 	密碼:<input type="text" name="psd" value="${param.psd}">${errors.psd}<br>
-	<input type="submit" value="送出">${errors.DB}
+	<input type="submit" value="送出">
 	</form>
 	
 

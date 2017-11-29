@@ -1,0 +1,57 @@
+--刪除表格
+use eventloop
+
+drop table ActivityDetail
+drop table activity
+drop table member
+
+create table Member(
+	memberid integer primary key identity,
+	account varchar(20)	,
+	psd varchar(10),
+	phone varchar(20)
+);
+--刪除表格
+
+
+create table Activity(
+	ActivityID integer primary key identity,
+	actStartDate date not null,
+	actRegion varchar(10),
+	actTitle varchar(50) not null,
+	Introduction varchar(500) ,
+	privacy bit default 1,
+	actPhoto varbinary(MAX),
+	memberID integer,
+	foreign key(memberid) references member(memberid)
+);
+
+create table ActivityDetail(
+	actDetail integer identity,
+	ActivityID integer,
+	Note varchar(50) not null,
+	Budget integer,
+	Kinds varchar(10) not null,
+	Times time,
+	Primary key(ActivityID,actDetail),
+	foreign key(ActivityID) references Activity(ActivityID)
+);
+
+--select * from Member
+--select * from Activity
+--select * from ActivityDetail
+
+--放入預設資料
+insert into member values('kevin5603','aaa','0911009338')
+insert into member values('leo855181','bbb','0912345678')
+
+insert into Activity (actStartDate,actRegion,actTitle,Introduction,memberid) values('2000-2-29','逢甲','逢甲3日遊','今天我要去逢甲',1)
+insert into Activity (actStartDate,actRegion,actTitle,Introduction,memberid) values('2015/1/1','花蓮','澎湖仔大戰花蓮','花蓮我來囉',1)
+insert into Activity (actStartDate,actRegion,actTitle,Introduction,memberid) values('2017-12-31','全台','臭宅快出來','腳踏車環島',2)
+
+insert into ActivityDetail (ActivityID,Note,Budget,Kinds,Times) values(1,'都會公園',100,'戶外','1:20')
+insert into ActivityDetail (ActivityID,Note,Budget,Kinds,Times) values(1,'台中歌劇廳',2000,'音樂','2:20')
+insert into ActivityDetail (ActivityID,Note,Budget,Kinds,Times) values(2,'花防部戰車營',0,'戶外','23:59')
+insert into ActivityDetail (ActivityID,Note,Budget,Kinds,Times) values(3,'鵝鑾鼻',17000,'戶外','0:30')
+insert into ActivityDetail (ActivityID,Note,Budget,Kinds,Times) values(3,'Fridays',300,'美食','00:20')
+

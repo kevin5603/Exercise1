@@ -9,41 +9,43 @@
 <body>
 
 
-	<h1>活動細節頁面</h1>
-	<form action="#" id="formm">
-		<fieldset >
-			<input type="text" name="times" placeholder="出發時間"> 
-			<select name="kinds">
-				<option>親子</option>
-				<option>音樂</option>
-				<option>戶外</option>
-				<option>刺激</option>
-			</select> 
-			<input type="text" name="note" placeholder="活動名稱"> 
-			<input type="text" name="budget" placeholder="預算"> 
-			<input type="submit" value="送出">
-		</fieldset>
-	</form>
-<!-- 	<div> -->
-<!-- 		<input type="button" id="bbb" value="新增行程"> -->
-<!-- 	</div> -->
-	
-	
-	
-	<script src="../js/jquery-3.2.1.min.js"></script>
-	<script>
-// 	$(function(){
-// 		$('#bbb').on('click',function(){
-// 			console.log('test');
-// 			$('#formm').append('<input type="text" name="times" placeholder="出發時間">'+
-// 					'<select name="kinds"><option>親子</option><option>音樂</option>'+
-// 					'<option>戶外</option><option>刺激</option></select> '+
-// 				'<input type="text" name="note" placeholder="活動名稱"><input type="text" name="budget" placeholder="預算">'+
-// 				'<br>');
-// 		})
-// 	});
-	
-	</script>
+    <h1>建立行程-2</h1>
+    <form action="#" id="formm">
+        <fieldset>
+            <input type="text" name="times" placeholder="出發時間">
+            <select name="kinds">
+                <option>親子</option>
+                <option>音樂</option>
+                <option>戶外</option>
+                <option>刺激</option>
+            </select>
+            <input type="text" name="note" placeholder="活動名稱">
+            <input type="text" name="budget" placeholder="預算">
+            <input type="button" id="bbb" value="新增行程">
+            <div id="tt">
+
+            </div>
+            <input type="submit" value="送出">
+        </fieldset>
+    </form>
+
+
+
+
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script>
+        $(function () {
+            $('#bbb').on('click', function () {
+                console.log('test');
+                $('#tt').append('<input type="text" name="times" placeholder="出發時間">' +
+                    '<select name="kinds"><option>親子</option><option>音樂</option>' +
+                    '<option>戶外</option><option>刺激</option></select> ' +
+                    '<input type="text" name="note" placeholder="活動名稱"><input type="text" name="budget" placeholder="預算">' +
+                    '<br>');
+            })
+        });
+
+    </script>
 
 </body>
 </html>

@@ -6,43 +6,23 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.hibernate.Session;
-
-import model.HibernateUtil.HibernateUtil;
-
 @Entity
 @Table(name="MEMBER")
 public class MemberBean {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer memberid;
+	private Integer memberID;
 	private String account;
 	private String psd;
 	private String phone;
 
-	//只能在一般java專案測試
-	public static void main(String[] args) {
-		try {
-		HibernateUtil.getSessionFactory().getCurrentSession().beginTransaction();
-		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
-
-		//insert
-		MemberBean insert=new MemberBean();
-		
-		
-		HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().commit();
-		}finally {
-			HibernateUtil.closeSessionFactory();
-		}
-
+	
+	public Integer getMemberID() {
+		return memberID;
 	}
 
-	public Integer getMemberid() {
-		return memberid;
-	}
-
-	public void setMemberid(Integer memberid) {
-		this.memberid = memberid;
+	public void setMemberID(Integer memberID) {
+		this.memberID = memberID;
 	}
 
 	public String getAccount() {
@@ -72,7 +52,7 @@ public class MemberBean {
 
 	@Override
 	public String toString() {
-		return "MemberBean [memberid=" + memberid + ", account=" + account + ", psd=" + psd + ", phone=" + phone + "]";
+		return "MemberBean [memberid=" + memberID + ", account=" + account + ", psd=" + psd + ", phone=" + phone + "]";
 	}
 	
 	

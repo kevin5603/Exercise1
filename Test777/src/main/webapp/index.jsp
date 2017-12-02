@@ -9,7 +9,7 @@
 <body>
 <h4>44</h4>
 	<h1>這是一個測試網頁</h1>
-	
+	<a href="/login/login.jsp">會員登入</a>
 	<a href="schedule">創立行程</a>	
 	
 </body>

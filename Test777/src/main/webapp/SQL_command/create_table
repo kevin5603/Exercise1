@@ -6,7 +6,7 @@ drop table activity
 drop table member
 
 create table Member(
-	memberid integer primary key identity,
+	memberID integer primary key identity,
 	account varchar(20)	,
 	psd varchar(10),
 	phone varchar(20)

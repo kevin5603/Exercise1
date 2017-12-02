@@ -9,7 +9,10 @@
 </head>
 <body>
 	<h1>成功登入</h1>
+	<h2>主Key${ans.memberID }</h2>
 	<h2>帳號:${ans.account }</h2>
 	<h2>密碼:${ans.psd }</h2>
+	
+	<a href="../activity/schedule.jsp">建立行程</a>
 </body>
 </html>

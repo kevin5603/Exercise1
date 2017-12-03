@@ -38,7 +38,7 @@ public class LoginController {
 
 		// 進入model部分 // 把資料輸入資料庫並回傳給bean
 		MemberBean bean = memberService.login(account, psd);
-
+		System.out.println("回到Controller "+bean);
 		if (bean == null) {
 			errors.put("DB", "帳號密碼不正確");
 			return "login.error";
